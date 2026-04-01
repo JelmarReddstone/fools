@@ -319,12 +319,46 @@
     .mkt-pct.dn { color: #c62828; }
     .mkt-pct.up { color: #2e7d32; }
 
-    .ad-box {
-      background: #f5f5f5; border: 1px dashed #ccc; height: 250px;
-      display: flex; align-items: center; justify-content: center;
-      color: #bbb; font-size: 11px; text-align: center;
-      margin-bottom: 28px;
+    .fake-ad {
+      background: #fff; border: 1px solid var(--border); border-radius: 4px;
+      overflow: hidden; margin-bottom: 28px; position: relative;
+      box-shadow: 0 1px 4px rgba(0,0,0,.05);
     }
+    .fake-ad .ad-label {
+      position: absolute; top: 6px; right: 8px;
+      font-size: 10px; color: #bbb; text-transform: uppercase;
+      letter-spacing: .06em; font-family: var(--sans);
+    }
+    .fake-ad-inner {
+      background: linear-gradient(135deg, #0f2a5e 0%, #1a4090 50%, #0d3580 100%);
+      padding: 28px 22px; text-align: center; color: #fff;
+    }
+    .fake-ad-logo { font-size: 13px; font-weight: 800; letter-spacing: -.01em; opacity: .9; margin-bottom: 14px; }
+    .fake-ad-logo em { color: #f0b429; font-style: normal; }
+    .fake-ad h4 {
+      font-size: 19px; font-weight: 800; line-height: 1.25;
+      margin-bottom: 10px; letter-spacing: -.01em;
+    }
+    .fake-ad p { font-size: 12.5px; opacity: .85; margin-bottom: 18px; line-height: 1.5; }
+    .fake-ad-cta {
+      display: inline-block; background: #f0b429; color: #000;
+      font-size: 12px; font-weight: 800; padding: 9px 20px;
+      border-radius: 4px; letter-spacing: .03em; text-transform: uppercase;
+      cursor: pointer; transition: background .15s;
+    }
+    .fake-ad-cta:hover { background: #f5c84a; }
+    .fake-ad-badge {
+      background: rgba(255,255,255,.15); border-radius: 20px;
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; padding: 4px 10px; margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .fake-ad-badge::before { content: '●'; color: #6ee7b7; font-size: 9px; }
+    .fake-ad-strip {
+      background: #f5f5f5; padding: 7px 14px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .fake-ad-strip span { font-size: 10.5px; color: #aaa; font-family: var(--sans); }
 
     .rel-list { list-style: none; }
     .rel-item { padding: 12px 0; border-bottom: 1px solid var(--border); }
@@ -712,7 +746,20 @@
           </div>
         </div>
 
-        <div class="ad-box">Advertisement<br><span style="font-size:10px">300 × 250</span></div>
+        <div class="fake-ad">
+          <div class="ad-label">Sponsored</div>
+          <div class="fake-ad-inner">
+            <div class="fake-ad-logo">Home<em>Track</em> Pro</div>
+            <div class="fake-ad-badge">New Listings · Live</div>
+            <h4>Find properties before they hit the portals</h4>
+            <p>Real-time alerts. Commute scoring. Local market insights.<br>Used by 40,000+ buyers across Europe.</p>
+            <div class="fake-ad-cta">Start free trial</div>
+          </div>
+          <div class="fake-ad-strip">
+            <span>hometrackpro.com</span>
+            <span>Ad · Why this ad?</span>
+          </div>
+        </div>
 
         <div class="widget">
           <div class="widget-title">Most Read</div>
@@ -859,6 +906,36 @@
 
   // Prevent nav link default for demo
   document.querySelectorAll('.nav-item a').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+</script>
+
+<!-- April Fools Reveal Banner -->
+<div id="af-banner" style="
+  position:fixed;bottom:0;left:0;right:0;z-index:9999;
+  background:linear-gradient(135deg,#1a1a1a 0%,#2d0a0a 100%);
+  border-top:4px solid #c7002e;
+  box-shadow:0 -8px 40px rgba(0,0,0,.45);
+  font-family:'Inter',system-ui,sans-serif;
+  transform:translateY(100%);
+  transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+">
+  <div style="max-width:900px;margin:0 auto;padding:28px 32px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;">
+    <div style="font-size:52px;flex-shrink:0;line-height:1">🎭</div>
+    <div style="flex:1;min-width:260px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+        <span style="background:#c7002e;color:#fff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;padding:3px 10px;border-radius:3px">April Fools</span>
+        <span style="color:#f87171;font-size:13px;font-weight:600">1 April 2026</span>
+      </div>
+      <div style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:6px">Gotcha! This article is completely fake. 😄</div>
+      <div style="font-size:14px;color:#94a3b8;line-height:1.6">Google Homes doesn't exist (yet). This was a prank — crafted to look exactly like a Reuters breaking news article. No markets were harmed in the making of this joke.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;flex-shrink:0">
+      <a href="google-homes.html" style="display:inline-flex;align-items:center;gap:8px;background:#c7002e;color:#fff;padding:12px 22px;font-size:14px;font-weight:700;border-radius:6px;text-decoration:none;white-space:nowrap" onmouseover="this.style.background='#a5001f'" onmouseout="this.style.background='#c7002e'">See the Google Homes prank &rarr;</a>
+      <button onclick="document.getElementById('af-banner').style.transform='translateY(100%)'" style="background:transparent;border:1px solid #334155;color:#94a3b8;padding:10px 22px;font-size:13px;font-weight:500;border-radius:6px;cursor:pointer;font-family:inherit">Dismiss</button>
+    </div>
+  </div>
+</div>
+<script>
+  setTimeout(() => { document.getElementById('af-banner').style.transform = 'translateY(0)'; }, 6000);
 </script>
 </body>
 </html>
